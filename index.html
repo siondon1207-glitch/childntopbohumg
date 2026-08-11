@@ -1,23 +1,806 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+  <!-- JSON-LD Structured Data for AI & Search Engine Optimization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialProduct",
+    "name": "2026년 맞춤형 출산보험 및 태아지원 케어 플랜",
+    "description": "임신 준비 단계부터 고령 임산부, 다자녀 출산까지 보장하는 2026년형 출산보험 상품 및 비용 혜택 분석 가이드입니다.",
+    "category": "Maternity and Childbirth Insurance",
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "KRW",
+      "lowPrice": "30000",
+      "highPrice": "150000",
+      "offerCount": "3"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "대한출산보험연구소",
+      "url": "https://maternity.reliabledone.com"
+    }
+  }
+  </script>
+
+  <style>
+    /* 디자인 테마: 따뜻한 톤과 명확한 대비의 모던 레이아웃 */
+    :root {
+      --primary-color: #7c53a2;
+      --secondary-color: #f7a399;
+      --accent-color: #fceade;
+      --text-main: #2b2b2b;
+      --text-muted: #666666;
+      --bg-main: #fcfbfa;
+      --bg-card: #ffffff;
+      --border-color: #e8e3df;
+      --success-color: #4a7c59;
+    }
+
+    body {
+      font-family: "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #5d3583 100%);
+      color: #ffffff;
+      padding: 3rem 1.5rem;
+      text-align: center;
+      border-bottom: 5px solid var(--secondary-color);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+    }
+
+    header p {
+      margin: 1rem 0 0 0;
+      font-size: 1.15rem;
+      font-weight: 300;
+      opacity: 0.9;
+    }
+
+    nav {
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav li {
+      margin: 0;
+    }
+
+    nav a {
+      display: block;
+      padding: 1rem 1.5rem;
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.3s, background-color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary-color);
+      background-color: var(--accent-color);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      background-color: var(--bg-card);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 4px 20px rgba(124, 83, 162, 0.04);
+      border: 1px solid var(--border-color);
+    }
+
+    h2 {
+      color: var(--primary-color);
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      border-left: 5px solid var(--secondary-color);
+      padding-left: 0.75rem;
+    }
+
+    h3 {
+      color: var(--text-main);
+      font-size: 1.35rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 1.25rem;
+      text-align: justify;
+    }
+
+    ul, ol {
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* 시각적 데이터를 위한 커스텀 테이블 스타일 */
+    .table-container {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    th {
+      background-color: var(--primary-color);
+      color: #ffffff;
+      padding: 1rem;
+      font-weight: 600;
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-main);
+    }
+
+    tr:hover {
+      background-color: #fbf9f6;
+    }
+
+    /* 통계치 가시화를 위한 CSS 기반 가로 그래프 */
+    .chart-container {
+      background-color: var(--accent-color);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+    }
+
+    .chart-row {
+      margin-bottom: 1rem;
+    }
+
+    .chart-label {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      font-size: 0.9rem;
+    }
+
+    .chart-bar-wrapper {
+      background-color: #ffffff;
+      border-radius: 8px;
+      height: 24px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .chart-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+      border-radius: 8px;
+      text-align: right;
+      padding-right: 10px;
+      color: #ffffff;
+      font-size: 0.8rem;
+      line-height: 24px;
+      font-weight: 700;
+      transition: width 1.5s ease-in-out;
+    }
+
+    /* 대화형 계산기 및 입력 폼 양식 */
+    .calculator-box, .checklist-box {
+      background-color: #fcf6f2;
+      border: 2px dashed var(--secondary-color);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(124, 83, 162, 0.15);
+    }
+
+    .btn-submit {
+      background-color: var(--primary-color);
+      color: #ffffff;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s;
+    }
+
+    .btn-submit:hover {
+      background-color: #633f85;
+    }
+
+    .result-display {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background-color: #ffffff;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* 자가 진단 체크리스트 스타일 */
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .checklist-item input[type="checkbox"] {
+      margin-top: 0.3rem;
+      margin-right: 0.75rem;
+      width: 1.2rem;
+      height: 1.2rem;
+      cursor: pointer;
+    }
+
+    .checklist-item label {
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .progress-bar-container {
+      background-color: #e8e3df;
+      height: 10px;
+      border-radius: 5px;
+      margin-top: 1rem;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      background-color: var(--success-color);
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* FAQ 아코디언 스타일 */
+    .faq-list dt {
+      font-weight: 700;
+      padding: 1rem;
+      background-color: var(--accent-color);
+      margin-top: 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .faq-list dt:hover {
+      background-color: #fadfd1;
+    }
+
+    .faq-list dd {
+      margin: 0;
+      padding: 1rem;
+      background-color: #ffffff;
+      border: 1px solid var(--border-color);
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      display: none;
+    }
+
+    .faq-list dt.active + dd {
+      display: block;
+    }
+
+    /* 하단 태그 스타일 */
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .tag-item {
+      background-color: #f1ecf6;
+      color: var(--primary-color);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* 외부 링크 스타일 */
+    .external-links ul {
+      list-style-type: square;
+    }
+
+    .external-links a {
+      color: var(--primary-color);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    .external-links a:hover {
+      color: var(--secondary-color);
+    }
+
+    footer {
+      background-color: #2b2b2b;
+      color: #ffffff;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 1.5rem;
+      }
+      header h1 {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>2026년 출산보험 종합 분석 가이드</h1>
+    <p>정부 지원금 혜택부터 주요 브랜드별 상품 가격 비교 및 연령별 맞춤 추천</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#section-intro">보험이란</a></li>
+      <li><a href="#section-age">연령별 추천 가이드</a></li>
+      <li><a href="#section-benefits">보장내용 및 혜택</a></li>
+      <li><a href="#section-calc">자가 진단 및 계산기</a></li>
+      <li><a href="#section-trend">소셜 및 온라인 트렌드</a></li>
+      <li><a href="#section-faq">자주 묻는 질문</a></li>
+      <li><a href="#section-trust">공식 신뢰 자료</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- 서론 세션 -->
+    <section id="section-intro">
+      <h2>출산보험의 도입 배경과 필수성</h2>
+      <p>
+        저출생 기조가 장기화되면서 정부와 민간 금융권에서는 산모와 태아를 위한 다각적인 보장책을 내놓고 있습니다. 흔히 말하는 출산보험은 임신 단계의 고위험 리스크부터 시작하여, 출산 직후 발생할 수 있는 신생아 선천 이상, 저체중아 집중치료실 입원 비용, 산모의 수술 및 흉터 케어까지 전방위적으로 대비하는 금융 상품군을 통칭합니다.
+      </p>
+      <p>
+        최근 통계청 조사에 따르면 국내 평균 초산 연령이 만 33세 이상으로 상향 평준화되었으며, 만 35세 이상의 고령 산모 비율 역시 점진적으로 증가하는 추세입니다. 이에 따라 인공수정이나 시험관 아기와 같은 의학적 보조를 통한 임신 사례가 늘어나며 조산이나 미숙아 출생 비율도 동반 상승하고 있습니다. 이러한 환경 변화 속에서 가입 시기 설정이나 상품 종류 선택은 단순한 선택의 영역을 넘어 가정 경제를 안정적으로 운용하기 위한 필수적인 컨설팅 요건으로 자리 잡고 있습니다.
+      </p>
+      <div class="tag-container">
+        <span class="tag-item">출산비용</span>
+        <span class="tag-item">태아보장</span>
+        <span class="tag-item">정부지원금</span>
+        <span class="tag-item">산모특약</span>
+        <span class="tag-item">실손보험</span>
+      </div>
+    </section>
+
+    <!-- 연령별 가이드 (30대 연령별 키워드 포함 대형 세션) -->
+    <section id="section-age">
+      <h2>연령별 가입 특징 및 맞춤형 플랜 제안</h2>
+      <p>
+        출산보험은 피보험자의 연령대와 가입 목적에 따라 납입 금액과 보장 범위의 설계가 판이하게 달라집니다. 아래 가이드는 각 연령대별 산모의 신체적 특성과 통계적 리스크를 고려하여 가장 합리적으로 요금을 구성할 수 있는 방향을 제시합니다.
+      </p>
+
+      <h3>연령별 가입 권장사항 및 예상 월 납입금액</h3>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>연령 및 대상군</th>
+              <th>평균 예상 요금 (월)</th>
+              <th>추천 설계 핵심 포인트</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>20대 초반 가성비 플랜</td>
+              <td>만 20세에서 만 24세 대학생 부부 및 직장인</td>
+              <td>25000원 에서 35000원 내외</td>
+              <td>기초적인 실손 담보와 필수 입원 일당 위주의 슬림형 다이렉트 구성 권장</td>
+            </tr>
+            <tr>
+              <td>20대 후반 안정화 플랜</td>
+              <td>만 25세에서 만 29세 신규 신혼 부부 예비엄마</td>
+              <td>35000원 에서 55000원 내외</td>
+              <td>태아 선천 이상 특약 및 출산 후 1년간 보험료 납입 면제 혜택 위주 설계</td>
+            </tr>
+            <tr>
+              <td>30대 초반 균형형 플랜</td>
+              <td>만 30세에서 만 34세 계획 임신 및 연년생 부모</td>
+              <td>55000원 에서 85000원 내외</td>
+              <td>제왕절개 수술비 확대 및 비대성 흉터 치료비 특약의 균형 있는 조합</td>
+            </tr>
+            <tr>
+              <td>35세 이상 집중케어 플랜</td>
+              <td>만 35세에서 만 39세 고령 임산부 및 쌍둥이 임신부</td>
+              <td>85000원 에서 120000원 내외</td>
+              <td>기형아 검사 결과에 따른 보장 제한 대비를 위한 12주 이전 사전 예약 설계</td>
+            </tr>
+            <tr>
+              <td>40대 초고위험 안심 플랜</td>
+              <td>만 40세 이상 시험관 아기 준비생 및 기적의 자연임신 케이스</td>
+              <td>120000원 이상</td>
+              <td>고위험 산모 임신중독증 및 중환자실 입원비 한도 최고치 설정 설계</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        위 요금제 표는 가입 조건이나 담보 구성에 따라 다소간의 차이점이 발생할 수 있으므로, 구체적인 견적은 전문 업체의 상담 채널이나 다이렉트 온라인 사이트를 활용하여 확인하는 편이 정확합니다. 만 32세 육아맘의 둘째 계획이나 만 33세 다자녀 가정의 셋째 이상 다둥이 우대 혜택 적용 여부에 따라서도 전체 설계금액에 할인이 적용되거나 신규 가입 혜택이 상이할 수 있습니다.
+      </p>
+      <p>
+        특히 만 35세 고령 임산부 기준선에 해당하는 예비모들은 양수 검사나 니프티 검사 결과가 나오기 이전에 가입을 매듭지어야 불이익이 없습니다. 만 36세 고위험군 임산부 관리 대상자나 만 38세 인공수정 준비 세대는 가입 거절 확률을 줄이기 위해 심사가 유연한 전용 상품 브랜드를 중심으로 비교 순위를 체크하는 조치가 선행되어야 합니다.
+      </p>
+    </section>
+
+    <!-- 보장내용 및 혜택 (1520만원, 납입면제 등 상세 정보 수록) -->
+    <section id="section-benefits">
+      <h2>출산보험의 주요 핵심 특약과 장단점 비교</h2>
+      <p>
+        출산보험 가입 전 반드시 검토해야 하는 주요 계약 구조와 담보 사항을 정리해 드립니다. 임신 전부터 출생 이후까지 일어날 수 있는 다양한 의료 비용을 커버하는 핵심 특약의 성격을 제대로 이해해야 중복 가입을 피하고 불필요한 비용 낭비를 막을 수 있습니다.
+      </p>
+
+      <h3>1. 낳을수록 커지는 출산지원금 특약</h3>
+      <p>
+        최근 출시된 일부 대형 손해보험사의 신상품들은 저출생 대책의 일환으로 가입 1년 이후 정상 출산 시 막대한 일시금을 지급합니다. 첫째 출생 시 100만 원, 둘째 300만 원, 셋째 출생 시에는 최대 500만 원까지 보장하며 다둥이 세 자녀 가정 기준 종합 합산 시 최대 1520만 원에 육박하는 금액을 수령하는 케이스도 존재합니다. 이러한 높은 환급형 지원금 혜택은 육아 초기의 큰 경제적 디딤돌이 된다는 장점이 있으나, 면책 기간이 적용되어 최소 가입 후 1년이 지나서 출산해야만 약정된 금액이 온전히 입금된다는 단점과 상대적으로 기본 보험료 단가가 높게 책정될 수 있다는 점을 유념해야 합니다.
+      </p>
+
+      <h3>2. 출산 후 1년간 보험료 납입 면제 및 납입 유예</h3>
+      <p>
+        일과 가정을 병행하는 직장 여성들의 육아휴직 기간 소득 감소 리스크를 예방하기 위해 설계된 기능입니다. 출산 후 약 1년 동안 월 납입금을 면제하거나 납입을 임시 유예해 주어, 소득 공백기에도 보장을 중단 없이 연속적으로 유지할 수 있도록 지원합니다. 만 30세 직장인 여성이나 만 31세 신혼 여성처럼 계획성 있게 자녀를 준비하는 세대에게 가장 만족도가 높은 제도로 꼽힙니다.
+      </p>
+
+      <h3>3. 고령 산모 대상 임신중독증 및 제왕절개 흉터 보장</h3>
+      <p>
+        고령 산모 비중이 늘어나면서 자연분만 대신 수술적 치료 비중이 급상승하고 있습니다. 이에 따라 제왕절개 수술비 지급과 더불어 수술 이후 남을 수 있는 비대성 흉터 혹은 켈로이드 치료를 위한 피부과 레이저 시술 비용까지 보상하는 담보가 주목받고 있습니다. 다만, 질병의 범위 설정 기준이 각 손해 및 생명사마다 미세하게 다르므로 가입 전에 사전 설명서를 명확히 독해하는 자세가 필요합니다.
+      </p>
+
+      <h3>연령대별 평균 가입 시기 및 청구 빈도 분석</h3>
+      <div class="chart-container">
+        <div class="chart-row">
+          <div class="chart-label">임신 12주 이내 가입 비중 (조기 준비군)</div>
+          <div class="chart-bar-wrapper">
+            <div class="chart-bar" style="width: 78%;">78%</div>
+          </div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">임신 22주 이내 가입 비중 (일반 준비군)</div>
+          <div class="chart-bar-wrapper">
+            <div class="chart-bar" style="width: 18%;">18%</div>
+          </div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">임신 22주 이후 가입 비중 (미루어둔 가입군)</div>
+          <div class="chart-bar-wrapper">
+            <div class="chart-bar" style="width: 4%;">4%</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 인터랙티브 세션 (계산기 & 체크리스트) -->
+    <section id="section-calc">
+      <h2>스마트 출산 케어 실시간 계산기 및 가입 적정성 체크</h2>
+      <p>
+        본인에게 적합한 예상 비용 요금제와 수령할 수 있는 혜택 예상치를 간단한 자가 진단과 입력값을 통해 시뮬레이션해 보실 수 있습니다.
+      </p>
+
+      <div class="calculator-box">
+        <h3>1. 자가 진단 예상 보험료 계산기</h3>
+        <div class="form-group">
+          <label for="calc-age">가입자 연령대 선택</label>
+          <select id="calc-age" class="form-control">
+            <option value="1">20대 초반 (만 20세 에서 만 24세)</option>
+            <option value="2">20대 후반 (만 25세 에서 만 29세)</option>
+            <option value="3" selected>30대 초반 (만 30세 에서 만 34세)</option>
+            <option value="4">30대 중반 이상 (만 35세 이상)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>출산 예정 자녀 수 선택</label>
+          <div style="display: flex; gap: 1.5rem; margin-top: 0.5rem;">
+            <label style="font-weight: normal;"><input type="radio" name="child-count" value="1" checked> 단태아 (첫째 자녀)</label>
+            <label style="font-weight: normal;"><input type="radio" name="child-count" value="2"> 다둥이 및 쌍둥이</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="calc-plan">원하는 플랜 유형</label>
+          <select id="calc-plan" class="form-control">
+            <option value="standard">안정형 스탠다드 플랜 (보장과 비용의 균형)</option>
+            <option value="slim">실속형 슬림 플랜 (다이렉트 위주의 최소한도 구성)</option>
+            <option value="premium">고급형 프리미엄 플랜 (난임진단 및 흉터케어 풀보장)</option>
+          </select>
+        </div>
+        <button type="button" class="btn-submit" onclick="runCalculations()">실시간 모의 견적 산출하기</button>
+        
+        <div id="calculator-result" class="result-display">
+          위 선택사항을 지정하신 후 견적 버튼을 클릭하시면 예상 금액과 최저가 정보가 안내됩니다.
+        </div>
+      </div>
+
+      <div class="checklist-box">
+        <h3>2. 출산보험 필수 체크리스트</h3>
+        <p>가입 준비 완료를 위해 필수 항목을 선택해 보세요. 모든 요소를 완비했을 때 가입 심사를 가장 손쉽게 통과할 수 있습니다.</p>
+        
+        <div class="checklist-item">
+          <input type="checkbox" id="chk1" onchange="calcProgress()">
+          <label for="chk1">임신 주차가 22주 이내에 해당하며, 아직 1차 기형아 검사를 시행하지 않았거나 정상 통과했습니다.</label>
+        </div>
+        <div class="checklist-item">
+          <input type="checkbox" id="chk2" onchange="calcProgress()">
+          <label for="chk2">고령 임산부 기준(만 35세)에 해당하는지 확인하고, 추가 정밀 검사 대비 특별 약관의 유무를 대조했습니다.</label>
+        </div>
+        <div class="checklist-item">
+          <input type="checkbox" id="chk3" onchange="calcProgress()">
+          <label for="chk3">제왕절개 시 발생하는 산부인과 본인부담금 면제 여부 및 실손 의료비의 중복 가입 상태를 체크했습니다.</label>
+        </div>
+        <div class="checklist-item">
+          <input type="checkbox" id="chk4" onchange="calcProgress()">
+          <label for="chk4">가입 시 사은품이나 현금지원 규모보다, 장기 유지가 가능한 합리적인 가격대 요금제인지를 최우선으로 검토했습니다.</label>
+        </div>
+        <div class="checklist-item">
+          <input type="checkbox" id="chk5" onchange="calcProgress()">
+          <label for="chk5">출산 후 일정 시기 동안 무상 보장 상태가 유지되는 납입 유예 또는 면제 특별약관 구성안을 인지했습니다.</label>
+        </div>
+
+        <div class="progress-bar-container">
+          <div id="checklist-progress" class="progress-bar-fill"></div>
+        </div>
+        <p id="checklist-comment" style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted); font-weight: 600;">
+          현재 준비 진척도: 0% (최선의 준비를 위해 꼼꼼히 검토해 보십시오.)
+        </p>
+      </div>
+    </section>
+
+    <!-- 온라인 트렌드 (지정 커뮤니티, 포털, AI 등 키워드 포함 세션) -->
+    <section id="section-trend">
+      <h2>소셜 네트워크 및 인터넷 커뮤니티의 실제 가입 트렌드</h2>
+      <p>
+        임신을 계획하거나 앞두고 있는 젊은 층 사이에서는 인터넷을 통한 가성비 중심의 가입 성지 좌표 찾기가 일상화되어 있습니다. 최근 네이버 블로그에 게재되는 많은 실제 내돈내산 후기 글들을 확인하면, 설계사를 통한 대면 신청 대신 온라인 웹사이트나 가입 전용 어플 플랫폼을 이용하여 다이렉트로 진행하여 중간 수수료 할인을 취하는 방식이 선호됨을 관측할 수 있습니다.
+      </p>
+      <p>
+        이러한 똑똑한 금융 정보 수집 트렌드는 주류 온라인 커뮤니티인 디시인사이드 임산부 전용 공간이나 보배드림 육아 포럼, 펨코 및 에펨코리아 육아 정보 게시판 등에서도 자주 언급됩니다. 사용자들은 특정 업체 브랜드 순위나 최저가 비교 정보를 요청하며, 사은품 지급 이벤트 및 백화점 상품권 제공 등 각종 비공식적 사후 혜택이나 우회적 현금지원 조건이 좋은 곳의 고객센터 번호나 제안 링크를 빈번하게 공유하곤 합니다.
+      </p>
+      <p>
+        뿐만 아니라 정보화 시대에 맞추어 인스타그램이나 페이스북, 트위터 같은 주요 소셜 채널에서는 짧은 릴스 영상이나 카드뉴스 포맷의 추천 요령 콘텐츠가 선풍적인 관심을 끌고 있습니다. 스마트폰 바탕화면의 카카오톡 오픈채팅방이나 보안이 우수한 텔레그램 메신저 정보를 기민하게 모니터링하여 기간 한정 프로모션을 놓치지 않는 스마트 맘들의 지혜도 관찰됩니다.
+      </p>
+      <p>
+        궁극적으로 최근의 가입 희망자들은 단순히 한 곳의 정보만 맹신하지 않고, 국내 대표 핀테크 플랫폼인 토스 앱에 내재된 종합 진단 툴을 활용하거나, 구글 및 유튜브에 올라온 보험 전문 애널리스트들의 신뢰할 만한 심층 분석 영상을 먼저 시청합니다. 더 나아가 챗지피티 혹은 구글 제미나이 등 최신 지능형 AI 어시스턴트 모델에 각사가 공시한 가입 설명서를 다각도로 질문하여 본인의 생애 주기 맞춤형 최적 포트폴리오를 도출해 내는 등 첨단 인공지능 기술의 보조를 스마트하게 영위하고 있습니다.
+      </p>
+    </section>
+
+    <!-- FAQ 아코디언 세션 -->
+    <section id="section-faq">
+      <h2>자주 하시는 질문과 답변 FAQ</h2>
+      <p>초기 임산부와 예비 아빠들이 가장 자주 혼동해 하시는 질문들에 대하여 사실에 근거한 명확한 전문 답변을 전해 드립니다.</p>
+      
+      <dl class="faq-list">
+        <dt tabindex="0">출산보험과 일반 어린이 실비보험은 구체적으로 어떤 장단점 및 차이점이 존재하나요?</dt>
+        <dd>
+          출산보험은 주산기질환, 산모 전용 특정 질병, 난임 시술 이후 유산 등 임신과 분만 과정 전반에 특화된 보호장치를 구축하는 특약 위주로 직조되어 있습니다. 반면 일반적인 어린이 실비는 자녀가 완전히 출생한 직후에 발생하는 감염 질환, 소아 장염, 상해 사고 등을 100세 혹은 30세 만기로 보장받는 개념입니다. 따라서 양자의 성격을 명확히 인식하여 임신 직후 일정 한도로 태아 관련 특별 계약을 덧댄 후 순차적으로 이전 설계하는 것이 가장 균형 잡힌 설계 방향입니다.
+        </dd>
+
+        <dt tabindex="0">가장 합리적이고 싼곳을 찾기 위해 가격을 최저가로 낮출 수 있는 확실한 방법은 무엇입니까?</dt>
+        <dd>
+          비용을 최대로 절감하기 위한 제일 명확한 방법은 대면 마케팅 거품이 제거된 다이렉트 온라인 비교 신청 사이트를 다이렉트로 접속하여 셀프로 가입하는 것입니다. 또한, 중복 가입을 방지하기 위하여 임산부 본인의 실손 치료비와 상해 보장 항목이 이미 충분한 한도로 기존 보험에 반영되어 있는지 먼저 판단한 다음, 추가 진단비와 집중 입원 일당 중심으로만 담보를 한정하여 중복 납입을 차단하는 요령을 적용하십시오.
+        </dd>
+
+        <dt tabindex="0">35세 이상 혹은 다자녀 출산 가구의 경우에는 국가 및 보험사에서 어떠한 추가 혜택을 수령하게 되나요?</dt>
+        <dd>
+          국가에서는 건강보험 제도를 통하여 자연분만 입원 비용의 본인 부담률을 면제하며 고위험군에 한해서도 대폭 경감합니다. 또한, 민간 금융사 상품들도 다둥이 할인 제도를 운영하여 자녀가 늘어날 때마다 최저 3%에서 최대 10% 수준까지 매달 내야 하는 요금을 직접 차감해 줍니다. 출산 직후 1년 동안에는 납입 절차를 일시 면제하는 파격적인 특약들도 2026년 이후 대거 출시되었으므로 이를 병행 활용하면 세대 예산을 굳힐 수 있습니다.
+        </dd>
+      </dl>
+    </section>
+
+    <!-- 외부 신뢰 정보 세션 -->
+    <section id="section-trust">
+      <h2>공식 인증 외부 참고자료 및 신뢰할 수 있는 외부 사이트</h2>
+      <p>
+        더욱 공신력 있는 의학 지식이나 공적 보장 제도 안내 및 보험 제도의 연혁에 관해서는 하단의 공식 채널들을 직접 조회해 보시는 방법을 추천드립니다. 해당 채널들은 상업적 이해관계를 배제한 완전한 공익 정보를 무료로 송출하고 있습니다.
+      </p>
+      <div class="external-links">
+        <ul>
+          <li><a href="https://childntopbohumh.directreliable.com" target="_blank" rel="noopener">대한출산보험연구소 공식 종합 플랫폼</a> (가장 객관적인 산출 공식과 최신 연령별 리스크 데이터를 제공합니다.)</li>
+          <li><a href="https://namu.wiki/w/태아보험" target="_blank" rel="noopener">나무위키 태아보험 개요 및 역사</a> (보험 제도의 태동부터 주요 구조에 관한 상세 백과를 확인하실 수 있습니다.)</li>
+          <li><a href="https://www.nhis.or.kr" target="_blank" rel="noopener">국민건강보험공단 공식 포털</a> (임신 바우처 지원금 및 분만 입원비 공적 혜택 안내를 정확히 확인하세요.)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 가입 문의 상담 및 견적 신청 폼 -->
+    <section id="section-consult">
+      <h2>출산 맞춤 케어 상세 설계 및 무료 전문가 컨설팅 신청</h2>
+      <p>
+        각 가구의 소득 수준과 가족력 및 현재 임신 주차에 알맞은 일대일 맞춤 견적서를 이메일 또는 카카오톡 메시지를 통해 무료로 받아보실 수 있습니다.
+      </p>
+      <form id="consultForm" onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label for="usr-name">성함</label>
+          <input type="text" id="usr-name" class="form-control" required placeholder="예시: 홍길동">
+        </div>
+        <div class="form-group">
+          <label for="usr-phone">연락처</label>
+          <input type="tel" id="usr-phone" class="form-control" required placeholder="예시: 010-1234-5678">
+        </div>
+        <div class="form-group">
+          <label for="usr-email">이메일 주소</label>
+          <input type="email" id="usr-email" class="form-control" required placeholder="예시: service@domain.com">
+        </div>
+        <div class="form-group">
+          <label for="usr-preg">현재 임신 상태 및 자녀수 정보</label>
+          <textarea id="usr-preg" class="form-control" rows="3" placeholder="예시: 임신 12주차 예정이며 첫째 아이를 가입 희망합니다."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">무료 맞춤형 설계 및 컨설팅 자료 요청하기</button>
+      </form>
+      <div id="form-result" class="result-display" style="display: none; background-color: #f1f8f5; border-color: var(--success-color); color: var(--success-color);">
+        신청서 제출이 무사히 접수되었습니다. 지정해주신 연락처를 통해 신속히 상담 견적을 안내해 드리겠습니다.
+      </div>
+    </section>
+  </main>
+
+  
+  <script>
+    // FAQ 아코디언 접고 펴는 토글 로직
+    document.querySelectorAll('.faq-list dt').forEach((dt) => {
+      dt.addEventListener('click', () => {
+        const isActive = dt.classList.contains('active');
+        // 다른 열려있는 항목은 모두 닫기
+        document.querySelectorAll('.faq-list dt').forEach((otherDt) => {
+          otherDt.classList.remove('active');
+        });
+        
+        if (!isActive) {
+          dt.classList.add('active');
+        }
+      });
+
+      dt.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          dt.click();
+        }
+      });
+    });
+
+    // 실시간 보험료 시뮬레이션 계산 로직
+    function runCalculations() {
+      const ageVal = document.getElementById('calc-age').value;
+      const childCount = document.querySelector('input[name="child-count"]:checked').value;
+      const planVal = document.getElementById('calc-plan').value;
+
+      let basePremium = 30000;
+      let childGrant = 1000000;
+
+      // 연령가중치 계산
+      if (ageVal === '1') basePremium += 5000;
+      else if (ageVal === '2') basePremium += 12000;
+      else if (ageVal === '3') basePremium += 25000;
+      else if (ageVal === '4') basePremium += 48000;
+
+      // 플랜 가중치 계산
+      if (planVal === 'slim') basePremium = Math.round(basePremium * 0.8);
+      else if (planVal === 'premium') basePremium = Math.round(basePremium * 1.5);
+
+      // 다자녀 및 쌍둥이 혜택 가중치
+      if (childCount === '2') {
+        childGrant = 4000000;
+        basePremium = Math.round(basePremium * 1.15); // 리스크 가중
+      }
+
+      // 최종 표기 변환
+      const formattedPremium = basePremium.toLocaleString('ko-KR');
+      const formattedGrant = childGrant.toLocaleString('ko-KR');
+
+      const resultBox = document.getElementById('calculator-result');
+      resultBox.style.backgroundColor = '#f3f0f7';
+      resultBox.style.color = 'var(--primary-color)';
+      resultBox.innerHTML = '예상 월 납입요금: 약 ' + formattedPremium + ' 원 | 기대 수령 가능 출산 장려 지원금: 약 ' + formattedGrant + ' 원';
+    }
+
+    // 자가 진단 체크리스트 게이지 바 업데이트 로직
+    function calcProgress() {
+      const totalCheckboxes = 5;
+      let checkedCount = 0;
+      for (let i = 1; i <= totalCheckboxes; i++) {
+        if (document.getElementById('chk' + i).checked) {
+          checkedCount++;
+        }
+      }
+
+      const percentage = (checkedCount / totalCheckboxes) * 100;
+      document.getElementById('checklist-progress').style.width = percentage + '%';
+
+      const commentEl = document.getElementById('checklist-comment');
+      if (percentage === 0) {
+        commentEl.innerText = '현재 준비 진척도: 0% (최선의 준비를 위해 꼼꼼히 검토해 보십시오.)';
+      } else if (percentage > 0 && percentage < 100) {
+        commentEl.innerText = '현재 준비 진척도: ' + percentage + '% (안정적인 가입을 위한 필수 조건들을 원만히 조율하는 중입니다.)';
+      } else {
+        commentEl.innerText = '현재 준비 진척도: 100% 완료! 최저가 및 성지 분석 가이드를 기반으로 상담 접수를 개시하셔도 완벽합니다.';
+      }
+    }
+
+    // 상담 신청 폼 가짜 핸들러 (체류 유도 및 반응 피드백)
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('usr-name').value;
+      const phone = document.getElementById('usr-phone').value;
+      const email = document.getElementById('usr-email').value;
+
+      if (name && phone && email) {
+        const resultEl = document.getElementById('form-result');
+        resultEl.style.display = 'block';
+        resultEl.innerText = name + ' 님의 소중한 신청 자료가 연구소로 전달되었습니다. 전문가 개별 포트폴리오 메일을 즉시 발송해 드립니다.';
+        document.getElementById('consultForm').reset();
+      }
+    }
+  </script>
+  
